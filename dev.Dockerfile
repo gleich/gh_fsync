@@ -1,8 +1,8 @@
 FROM golang:1.14
 
 # Meta data:
-LABEL maintainer="project_author_email"
-LABEL description="project_description"
+LABEL maintainer="matthewgleich@gmail.com"
+LABEL description="🔄 GitHub action to sync files across repos in GitHub"
 
 # Copying over all the files:
 COPY . /usr/src/app
