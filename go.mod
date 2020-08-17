@@ -1,6 +1,6 @@
 module github.com/Matt-Gleich/gh_fsync
 
-go 1.14
+go 1.15
 
 require (
 	github.com/Matt-Gleich/logoru v0.0.0-20200817001912-097ac1695c5f
