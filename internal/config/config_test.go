@@ -1,37 +1,28 @@
 package config
 
 import (
-	"os"
 	"testing"
 
+	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/stretchr/testify/assert"
 )
 
+const upLevels = 2
+
 func TestCheckExistence(t *testing.T) {
-	err := os.Chdir("../..")
-	checkError(t, err)
-
-	// yml file
-	testCheckExistenceInstance(t, 0)
-	testCheckExistenceInstance(t, 1)
-}
-
-func testCheckExistenceInstance(t *testing.T, index int) {
-	// Creating file
-	f, err := os.Create(validLocations[0])
-	checkError(t, err)
-	err = f.Close()
-	checkError(t, err)
-	// Checking if the file exists
-	yml_instance := checkExistence()
-	assert.Equal(t, yml_instance, validLocations[0])
-	// Removing the file
-	err = os.Remove(validLocations[0])
-	checkError(t, err)
-}
-
-func checkError(t *testing.T, err error) {
-	if err != nil {
-		t.Error(err)
+	utils.ProjectRoot(t, upLevels)
+	for i := range validLocations {
+		utils.CreateTempEnv(t, validLocations[i])
+		instance := checkExistence()
+		assert.Equal(t, instance, validLocations[i])
+		utils.RemoveTempEnv(t, validLocations[i])
 	}
+}
+
+func TestRawRead(t *testing.T) {
+	var instance Outline
+	expected := &Outline{Variables: map[string]string{"docker_username": "mattgleich", "github_username": "${{ file.USERNAME }}"}, Files: []interface{}{map[string]interface{}{"CONTRIBUTING.md": "CONTRIBUTING.md", "variables": map[string]interface{}{"docker_username": "USERNAME"}}}}
+
+	rawRead(&instance, "examples/config.yml")
+	assert.Equal(t, instance, *expected)
 }

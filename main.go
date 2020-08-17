@@ -1,7 +1,9 @@
 package main
 
-import "github.com/Matt-Gleich/logoru"
+import (
+	"github.com/Matt-Gleich/logoru"
+)
 
 func main() {
-	logoru.Success("Started up the program!")
+	logoru.Success("Loaded up program!")
 }
