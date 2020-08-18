@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	// fmt.Println(source.RawURL("https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md"))
+	// fmt.Printf("%#v", source.GetContent("https://raw.githubusercontent.com/Matt-Gleich/CongressPresenation/master/.metadata"))
 }
