@@ -2,6 +2,8 @@ variables:
   docker_username: mattgleich
   github_username: ${{ file.USERNAME }} # Access prebuilt variables
 files:
-  - CONTRIBUTING.md: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md # Mapping registry repo file to file in current repo
+  - name: CONTRIBUTING.md # Mapping registry repo file to file in current repo
+    url: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
     variables:
       docker_username: USERNAME # Overriding global value
+

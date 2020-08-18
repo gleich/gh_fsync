@@ -19,7 +19,7 @@ func TestCheckExistence(t *testing.T) {
 
 func TestRawRead(t *testing.T) {
 	var instance Outline
-	expected := &Outline{Variables: map[string]string{"docker_username": "mattgleich", "github_username": "${{ file.USERNAME }}"}, Files: []interface{}{map[string]interface{}{"CONTRIBUTING.md": "https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md", "variables": map[string]interface{}{"docker_username": "USERNAME"}}}}
+	expected := &Outline{Variables: map[string]string{"docker_username": "mattgleich", "github_username": "${{ file.USERNAME }}"}, Files: []FileOutline{{Name: "CONTRIBUTING.md", URL: "https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md", Variables: map[string]string{"docker_username": "USERNAME"}}}}
 
 	rawRead(&instance, "examples/config.yml")
 	assert.Equal(t, instance, *expected)

@@ -11,12 +11,18 @@ import (
 // Outline for the configuration file
 type Outline struct {
 	Variables map[string]string `yaml:"variables"`
-	Files     interface{}       `yaml:"files"`
+	Files     []FileOutline     `yaml:"files"`
+}
+
+type FileOutline struct {
+	Name      string            `yaml:"name"`
+	URL       string            `yaml:"url"`
+	Variables map[string]string `yaml:"variables"`
 }
 
 var validLocations = []string{".github/fsync.yml", ".github/fsync.yaml"}
 
-// Check existence and read the configuration file
+// Check existence and read the configuration fiAle
 func Read() Outline {
 	logoru.Info("Reading from configuration file")
 	path := checkExistence()
