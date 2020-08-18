@@ -7,10 +7,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-const upLevels = 2
-
 func TestCheckExistence(t *testing.T) {
-	utils.ProjectRoot(t, upLevels)
+	utils.ProjectRoot(t, 2)
 	for i := range validLocations {
 		utils.CreateTempEnv(t, validLocations[i])
 		instance := checkExistence()

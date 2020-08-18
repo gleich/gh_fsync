@@ -16,6 +16,16 @@ type Outline struct {
 
 var validLocations = []string{".github/fsync.yml", ".github/fsync.yaml"}
 
+// Check existence and read the configuration file
+func Read() Outline {
+	logoru.Info("Reading from configuration file")
+	path := checkExistence()
+	var configuration Outline
+	rawRead(&configuration, path)
+	logoru.Success("Read from configuration file")
+	return configuration
+}
+
 // Read from the config file
 func rawRead(c *Outline, path string) {
 	content, err := ioutil.ReadFile(path)
