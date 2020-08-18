@@ -1,9 +1,5 @@
 package main
 
-import (
-	"github.com/Matt-Gleich/logoru"
-)
-
 func main() {
-	logoru.Success("Loaded up program!")
+	// fmt.Println(source.RawURL("https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md"))
 }
