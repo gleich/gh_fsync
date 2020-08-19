@@ -5,7 +5,7 @@ import (
 	"github.com/go-git/go-git/v5"
 )
 
-func Commit() {
+func Commit() git.Repository {
 	logoru.Info("Commiting changes")
 	repo, err := git.PlainOpen(".")
 	if err != nil {
@@ -23,4 +23,6 @@ func Commit() {
 		logoru.Error("Failed to commit changes")
 	}
 	logoru.Success("Committed changes!")
+
+	return *repo
 }
