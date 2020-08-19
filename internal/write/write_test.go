@@ -4,8 +4,20 @@ import (
 	"testing"
 
 	"github.com/Matt-Gleich/gh_fsync/internal/source"
+	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/stretchr/testify/assert"
 )
+
+func TestCheckExistence(t *testing.T) {
+	utils.ProjectRoot(t, 2)
+	checkExistence(map[string]string{
+		"LICENSE.md": "",
+	})
+	checkExistence(map[string]string{
+		"README.md":       "",
+		"CONTRIBUTING.md": "",
+	})
+}
 
 func TestGetChangedFiles(t *testing.T) {
 	instance1 := getChangedFiles(map[string]source.File{
