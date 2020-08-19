@@ -10,14 +10,15 @@ import (
 
 // Outline for the configuration file
 type Outline struct {
-	Variables map[string]string `yaml:"variables"`
-	Files     []FileOutline     `yaml:"files"`
+	GlobalReplace map[string]string `yaml:"variables"`
+	Files         []FileOutline     `yaml:"files"`
 }
 
+// Outline for a file in the config
 type FileOutline struct {
-	Name      string            `yaml:"name"`
-	URL       string            `yaml:"url"`
-	Variables map[string]string `yaml:"variables"`
+	Name         string            `yaml:"name"`
+	URL          string            `yaml:"url"`
+	LocalReplace map[string]string `yaml:"variables"`
 }
 
 var validLocations = []string{".github/fsync.yml", ".github/fsync.yaml"}

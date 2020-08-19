@@ -6,4 +6,7 @@ files:
     url: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
     variables:
       docker_username: USERNAME # Overriding global value
-
+  - name: LICENSE.md # Mapping registry repo file to file in current repo
+    url: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
+    variables:
+      docker_username: USERNAME # Overriding global value
