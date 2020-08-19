@@ -13,8 +13,8 @@ import (
 
 // A file entry
 type File struct {
-	Original string
-	Updated  string
+	Current string
+	Updated string
 }
 
 // Get the content for all the files
@@ -22,11 +22,12 @@ func GetFromSource(configuration config.Outline) map[string]File {
 	logoru.Info("Getting latest changes")
 	files := map[string]File{}
 	for _, file := range configuration.Files {
-		originalFile := getOrigContent(rawURL(file.URL))
-		updateFile := replace(originalFile, configuration.GlobalReplace, file.LocalReplace)
+		currentFile := getCurrentContent(file.Name)
+		sourceFile := getSourceContent(rawURL(file.URL))
+		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace)
 		files[file.Name] = File{
-			Original: originalFile,
-			Updated:  updateFile,
+			Current: currentFile,
+			Updated: updateFile,
 		}
 	}
 	logoru.Success("Got latest changes")
@@ -48,9 +49,30 @@ func replace(raw string, globalReplace map[string]string, localReplace map[strin
 	return raw
 }
 
+// Get current, local content of a file
+func getCurrentContent(fileName string) string {
+	// Checking to see if the file exists
+	info, err := os.Stat(fileName)
+	if os.IsNotExist(err) {
+		logoru.Error("File", fileName, "doesn't exist")
+		os.Exit(1)
+	}
+	if info.IsDir() {
+		logoru.Error("File", fileName, "is a directory")
+		os.Exit(1)
+	}
+	// Reading from the actual file
+	content, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		logoru.Error("Failed to read from file:", fileName, err)
+		os.Exit(1)
+	}
+	return string(content)
+}
+
 // Get the content of a file from the raw url
 // Returns the contents of that file
-func getOrigContent(url string) string {
+func getSourceContent(url string) string {
 	// Making get request
 	resp, err := http.Get(url)
 	if err != nil || resp.StatusCode != 200 {
