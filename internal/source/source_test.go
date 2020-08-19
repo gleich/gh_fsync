@@ -14,8 +14,8 @@ func TestReplace(t *testing.T) {
 
 func TestGetSourceContent(t *testing.T) {
 	utils.ProjectRoot(t, 2)
-	instance := getCurrentContent(".dockerignore")
-	assert.Equal(t, "node_modules\nnpm-debug.log\n*.md\ndocker-compose*\n.dockerignore\n.gitignore\n.env\n*/bin\n*/obj\nREADME.md\nLICENSE\n.vscode\n", instance)
+	instance := getCurrentContent(".github/workflows/contributors.yml")
+	assert.Equal(t, "name: contributors\n\non:\n  push:\n    branches:\n      - master\n\njobs:\n  contributor_list:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@master\n      - uses: cjdenio/contributor_list@master\n        with:\n          commit_message: 📝 Update contributors list\n          max_contributors: 10\n", instance)
 }
 
 func TestGetContent(t *testing.T) {
