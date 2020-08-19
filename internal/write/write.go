@@ -8,6 +8,13 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
+func WriteChanges(files map[string]source.File) {
+	logoru.Info("Writing changes files")
+	changedFiles := getChangedFiles(files)
+	rawWrite(changedFiles)
+	logoru.Success("Wrote changes to files!")
+}
+
 // Write to all the files
 func rawWrite(files map[string]string) {
 	for fileName, fileContent := range files {

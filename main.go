@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
-
+	"github.com/Matt-Gleich/gh_fsync/internal/changes"
 	"github.com/Matt-Gleich/gh_fsync/internal/config"
 	"github.com/Matt-Gleich/gh_fsync/internal/source"
+	"github.com/Matt-Gleich/gh_fsync/internal/write"
 )
 
 func main() {
 	configuration := config.Read()
 	sourceFiles := source.GetFromSource(configuration)
-	fmt.Printf("%#v", sourceFiles)
+	write.WriteChanges(sourceFiles)
+	changes.Commit()
 }
