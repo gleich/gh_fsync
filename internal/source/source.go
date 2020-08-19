@@ -1,7 +1,6 @@
 package source
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -20,7 +19,7 @@ type File struct {
 
 // Get the content for all the files
 func GetFromSource(configuration config.Outline) map[string]File {
-	logoru.Info("Checking for file updates")
+	logoru.Info("Getting latest changes")
 	files := map[string]File{}
 	for _, file := range configuration.Files {
 		originalFile := getOrigContent(rawURL(file.URL))
@@ -30,10 +29,11 @@ func GetFromSource(configuration config.Outline) map[string]File {
 			Updated:  updateFile,
 		}
 	}
+	logoru.Success("Got latest changes")
 	return files
 }
 
-// Replace everything in the file. Replace everything defined for that specific file (localReplace) first and then any global replacements (globalReplace)
+// Replace everything defined for that specific file (localReplace) first and then any global replacements (globalReplace)
 func replace(raw string, globalReplace map[string]string, localReplace map[string]string) string {
 	// Local replace
 	for key, value := range localReplace {
@@ -45,7 +45,6 @@ func replace(raw string, globalReplace map[string]string, localReplace map[strin
 			raw = strings.ReplaceAll(raw, key, value)
 		}
 	}
-	fmt.Println(raw)
 	return raw
 }
 
