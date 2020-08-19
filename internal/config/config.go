@@ -21,7 +21,9 @@ type FileOutline struct {
 	LocalReplace map[string]string `yaml:"variables"`
 }
 
-var validLocations = []string{".github/fsync.yml", ".github/fsync.yaml"}
+var validLocations = []string{
+	".github/fsync.yml", ".github/fsync.yaml", ".fsync.yml", ".fsync.yaml", "fsync.yml", "fsync.yaml",
+}
 
 // Check existence and read the configuration fiAle
 func Read() Outline {
