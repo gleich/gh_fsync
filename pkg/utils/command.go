@@ -1,17 +1,18 @@
 package utils
 
 import (
-	"fmt"
+	"bytes"
 	"os/exec"
-	"strings"
 )
 
 // Run a command and return the error
-func RunCommand(command string, msg string) string {
-	cmdChunks := strings.Split(command, " ")
-	out, err := exec.Command(cmdChunks[0], cmdChunks[1:]...).Output()
-	strOut := string(out)
-	fmt.Print(strOut)
-	CheckErr(msg, err)
-	return strOut
+func RunCommand(name string, args []string, msg string) string {
+	cmd := exec.Command(name, args...)
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	CheckErr(msg+":"+stderr.String(), err)
+	return out.String()
 }

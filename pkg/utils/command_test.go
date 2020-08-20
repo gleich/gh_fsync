@@ -8,6 +8,6 @@ import (
 
 func TestRunCommand(t *testing.T) {
 	const failMsg = "Failed :("
-	RunCommand("ls", failMsg)
-	assert.Equal(t, "Hello\n", RunCommand("echo Hello", failMsg))
+	RunCommand("ls", []string{}, failMsg)
+	assert.Equal(t, "Hello\n", RunCommand("echo", []string{"Hello"}, failMsg))
 }
