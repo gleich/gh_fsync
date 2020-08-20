@@ -1,32 +1,25 @@
 package changes
 
 import (
+	"fmt"
 	"os"
+	"os/exec"
 
 	"github.com/Matt-Gleich/logoru"
-	"github.com/go-git/go-git/v5"
 )
 
-func Commit() git.Repository {
+func Commit() {
 	logoru.Info("Commiting changes")
-	repo, err := git.PlainOpen(".")
+	err := exec.Command("git", "add", ".").Run()
 	if err != nil {
-		logoru.Error("Failed to open git repo", err)
+		logoru.Error("Failed to stage changes", err)
 		os.Exit(1)
 	}
-	tree, err := repo.Worktree()
-	if err != nil {
-		logoru.Error("Failed to get working tree", err)
-		os.Exit(1)
-	}
-
-	_, err = tree.Commit("", &git.CommitOptions{
-		All: true,
-	})
+	commitMsg := os.Getenv("COMMIT_MESSAGE")
+	err = exec.Command("git", "commit", "-m", fmt.Sprintf(`"%v"`, commitMsg)).Run()
 	if err != nil {
 		logoru.Error("Failed to commit changes", err)
 		os.Exit(1)
 	}
 	logoru.Success("Committed changes!")
-	return *repo
 }

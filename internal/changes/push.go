@@ -1,15 +1,18 @@
 package changes
 
 import (
+	"os"
+	"os/exec"
+
 	"github.com/Matt-Gleich/logoru"
-	"github.com/go-git/go-git/v5"
 )
 
-func Push(repo git.Repository) {
+func Push() {
 	logoru.Info("Pushing changes")
-	err := repo.Push(&git.PushOptions{})
+	err := exec.Command("git", "push").Run()
 	if err != nil {
 		logoru.Error("Failed to push changes", err)
+		os.Exit(1)
 	}
 	logoru.Success("Pushed changes to master! Have a good day 👋")
 }

@@ -11,6 +11,6 @@ func main() {
 	configuration := config.Read()
 	sourceFiles := source.GetFromSource(configuration)
 	write.WriteChanges(sourceFiles)
-	repo := changes.Commit()
-	changes.Push(repo)
+	changes.Commit()
+	changes.Push()
 }
