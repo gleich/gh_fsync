@@ -4,6 +4,7 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
+// Prod version of rawGetChanges
 func GetChanges(files map[string]File) map[string]string {
 	logoru.Info("Get changed files")
 	changes := rawGetChanges(files)

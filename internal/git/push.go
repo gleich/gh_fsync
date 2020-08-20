@@ -7,6 +7,7 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
+// Push changes
 func Push() {
 	logoru.Info("Pushing changes")
 	err := exec.Command("git", "push").Run()

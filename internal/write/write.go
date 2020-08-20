@@ -7,7 +7,7 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
-// Prod writer
+// Prod version for rawWrite
 func WriteChanges(changes map[string]string) {
 	logoru.Info("Writing changes files")
 	rawWrite(changes)

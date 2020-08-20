@@ -7,6 +7,7 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
+// Commit the changes
 func Commit() {
 	logoru.Info("Commiting changes")
 	commitMsg := os.Getenv("INPUT_COMMIT_MESSAGE")
