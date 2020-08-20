@@ -2,6 +2,7 @@ package write
 
 import (
 	"io/ioutil"
+	"os"
 
 	"github.com/Matt-Gleich/gh_fsync/internal/source"
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
@@ -12,6 +13,10 @@ import (
 func WriteChanges(files map[string]source.File) {
 	logoru.Info("Writing changes files")
 	changedFiles := getChangedFiles(files)
+	if len(changedFiles) == 0 {
+		logoru.Info("No changes detected. Have a nice day! 👋")
+		os.Exit(0)
+	}
 	rawWrite(changedFiles)
 	logoru.Success("Wrote changes to files!")
 }
