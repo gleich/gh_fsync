@@ -27,7 +27,7 @@ func rawWrite(files map[string]string) {
 func getChangedFiles(files map[string]source.File) map[string]string {
 	changedFiles := map[string]string{}
 	for fileName, file := range files {
-		if file.Current == file.Updated {
+		if file.Current != file.Updated {
 			changedFiles[fileName] = file.Updated
 		}
 	}
