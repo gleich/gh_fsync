@@ -1,9 +1,13 @@
 package utils
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestRunCommand(t *testing.T) {
 	const failMsg = "Failed :("
-	RunCommand("ls -la", failMsg)
 	RunCommand("ls", failMsg)
+	assert.Equal(t, "Hello\n", RunCommand("echo Hello", failMsg))
 }

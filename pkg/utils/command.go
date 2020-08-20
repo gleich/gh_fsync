@@ -1,14 +1,17 @@
 package utils
 
 import (
+	"fmt"
 	"os/exec"
 	"strings"
 )
 
 // Run a command and return the error
-func RunCommand(command string, msg string) {
+func RunCommand(command string, msg string) string {
 	cmdChunks := strings.Split(command, " ")
-	cmd := exec.Command(cmdChunks[0], cmdChunks[1:]...)
-	err := cmd.Run()
+	out, err := exec.Command(cmdChunks[0], cmdChunks[1:]...).Output()
+	strOut := string(out)
+	fmt.Println(strOut)
 	CheckErr(msg, err)
+	return strOut
 }
