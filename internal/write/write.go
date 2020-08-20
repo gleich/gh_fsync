@@ -2,9 +2,9 @@ package write
 
 import (
 	"io/ioutil"
-	"os"
 
 	"github.com/Matt-Gleich/gh_fsync/internal/source"
+	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
 )
 
@@ -19,10 +19,7 @@ func WriteChanges(files map[string]source.File) {
 func rawWrite(files map[string]string) {
 	for fileName, fileContent := range files {
 		err := ioutil.WriteFile(fileName, []byte(fileContent), 0700)
-		if err != nil {
-			logoru.Error("Failed to write to file:", fileName, err)
-			os.Exit(1)
-		}
+		utils.CheckErr("Failed to write to "+fileName, err)
 	}
 }
 

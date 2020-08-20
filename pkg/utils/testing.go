@@ -5,25 +5,18 @@ import (
 	"testing"
 )
 
-// Check for a error in one line
-func CheckError(t *testing.T, err error) {
-	if err != nil {
-		t.Error(err)
-	}
-}
-
 // Create a temporary environment for testing
 func CreateTempEnv(t *testing.T, fName string) {
 	f, err := os.Create(fName)
-	CheckError(t, err)
+	CheckTestingErr(t, err)
 	err = f.Close()
-	CheckError(t, err)
+	CheckTestingErr(t, err)
 }
 
 // Remove the temporary environment for testing
 func RemoveTempEnv(t *testing.T, fName string) {
 	err := os.Remove(fName)
-	CheckError(t, err)
+	CheckTestingErr(t, err)
 }
 
 // Chdir into project root
@@ -33,5 +26,5 @@ func ProjectRoot(t *testing.T, levels int) {
 		directories = directories + "../"
 	}
 	err := os.Chdir(directories)
-	CheckError(t, err)
+	CheckTestingErr(t, err)
 }

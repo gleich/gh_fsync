@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
 	"gopkg.in/yaml.v3"
 )
@@ -38,15 +39,9 @@ func Read() Outline {
 // Read from the config file
 func rawRead(c *Outline, path string) {
 	content, err := ioutil.ReadFile(path)
-	if err != nil {
-		logoru.Error("Failed to read config file;", err)
-		os.Exit(1)
-	}
+	utils.CheckErr("Failed to read config file", err)
 	err = yaml.Unmarshal(content, c)
-	if err != nil {
-		logoru.Error("Failed to unmarshal yaml config;", err)
-		os.Exit(1)
-	}
+	utils.CheckErr("Failed to unmarshal yaml config", err)
 }
 
 // Check to make sure the config file exists. Returns the path

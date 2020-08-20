@@ -21,9 +21,6 @@ func SafeFileRead(fileName string) string {
 	}
 	// Reading from the actual file
 	content, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		logoru.Error("Failed to read from file:", fileName, err)
-		os.Exit(1)
-	}
+	CheckErr("Failed to read from file;", err)
 	return string(content)
 }

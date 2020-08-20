@@ -61,10 +61,7 @@ func getSourceContent(url string) string {
 	defer resp.Body.Close()
 	// Reading the actual response
 	data, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		logoru.Error("Failed to parse get request for file;", url, ";", err)
-		os.Exit(1)
-	}
+	utils.CheckErr("Failed to parse get request for file "+url, err)
 	return string(data)
 }
 
