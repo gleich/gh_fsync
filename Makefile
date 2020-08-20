@@ -42,6 +42,13 @@ test-go:
 test-in-docker: build-docker-dev
 	docker run mattgleich/gh_fsync:test
 
+###########
+# Releasing
+###########
+
+release: build-docker-platform
+	docker push mattgleich/gh_fsync:platform
+
 ##########
 # Grouping
 ##########
