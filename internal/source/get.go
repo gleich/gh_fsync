@@ -1,6 +1,8 @@
 package source
 
 import (
+	"os"
+
 	"github.com/Matt-Gleich/logoru"
 )
 
@@ -8,6 +10,10 @@ import (
 func GetChanges(files map[string]File) map[string]string {
 	logoru.Info("Get changed files")
 	changes := rawGetChanges(files)
+	if len(changes) == 0 {
+		logoru.Info("No changes detected! Have a good day 👋")
+		os.Exit(0)
+	}
 	logoru.Success("Got changed files")
 	return changes
 }
