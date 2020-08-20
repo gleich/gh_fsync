@@ -1,12 +1,14 @@
-variables:
-  docker_username: mattgleich
-  github_username: ${{ file.USERNAME }} # Access prebuilt variables
+replace:
+  - before: project_name
+    after: gh_fsync
 files:
-  - name: CONTRIBUTING.md # Mapping registry repo file to file in current repo
+  - name: CONTRIBUTING.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
-    variables:
-      docker_username: USERNAME # Overriding global value
-  - name: LICENSE.md # Mapping registry repo file to file in current repo
+    replace:
+      - before: project_name
+        after: testing
+  - name: LICENSE.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
-    variables:
-      docker_username: USERNAME # Overriding global value
+    replace:
+      - before: docker_username
+        after: TESTING TESTING

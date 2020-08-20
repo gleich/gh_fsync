@@ -11,15 +11,21 @@ import (
 
 // Outline for the configuration file
 type Outline struct {
-	GlobalReplace map[string]string `yaml:"variables"`
-	Files         []FileOutline     `yaml:"files"`
+	GlobalReplace []ReplaceOutline `yaml:"replace"`
+	Files         []FileOutline    `yaml:"files"`
 }
 
 // Outline for a file in the config
 type FileOutline struct {
-	Name         string            `yaml:"name"`
-	Source       string            `yaml:"source"`
-	LocalReplace map[string]string `yaml:"variables"`
+	Name         string           `yaml:"name"`
+	Source       string           `yaml:"source"`
+	LocalReplace []ReplaceOutline `yaml:"replace"`
+}
+
+// Outline for a replacement
+type ReplaceOutline struct {
+	Before string `yaml:"before"`
+	After  string `yaml:"after"`
 }
 
 var validLocations = []string{

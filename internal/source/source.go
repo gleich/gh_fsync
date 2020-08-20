@@ -35,15 +35,22 @@ func GetFromSource(configuration config.Outline) map[string]File {
 }
 
 // Replace everything defined for that specific file (localReplace) first and then any global replacements (globalReplace)
-func replace(raw string, globalReplace map[string]string, localReplace map[string]string) string {
+func replace(raw string, globalReplace []config.ReplaceOutline, localReplace []config.ReplaceOutline) string {
 	// Local replace
-	for key, value := range localReplace {
-		raw = strings.ReplaceAll(raw, key, value)
+	for _, lReplace := range localReplace {
+		raw = strings.ReplaceAll(raw, lReplace.Before, lReplace.After)
 	}
 	// Global replace
-	for key, value := range globalReplace {
-		if !utils.ContainsMapKey(key, localReplace) {
-			raw = strings.ReplaceAll(raw, key, value)
+	for _, gReplace := range globalReplace {
+		var alreadyUsed bool
+		for _, lReplace := range localReplace {
+			if gReplace.Before == lReplace.Before {
+				alreadyUsed = true
+				break
+			}
+		}
+		if !alreadyUsed {
+			raw = strings.ReplaceAll(raw, gReplace.Before, gReplace.After)
 		}
 	}
 	return raw
