@@ -23,7 +23,7 @@ func GetFromSource(configuration config.Outline) map[string]File {
 	files := map[string]File{}
 	for _, file := range configuration.Files {
 		currentFile := utils.SafeFileRead(file.Name)
-		sourceFile := getSourceContent(rawURL(file.URL))
+		sourceFile := getSourceContent(rawURL(file.Source))
 		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace)
 		files[file.Name] = File{
 			Current: currentFile,

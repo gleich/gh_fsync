@@ -8,6 +8,7 @@ import (
 	"github.com/Matt-Gleich/logoru"
 )
 
+// Prod writer
 func WriteChanges(files map[string]source.File) {
 	logoru.Info("Writing changes files")
 	changedFiles := getChangedFiles(files)

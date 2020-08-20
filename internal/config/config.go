@@ -18,7 +18,7 @@ type Outline struct {
 // Outline for a file in the config
 type FileOutline struct {
 	Name         string            `yaml:"name"`
-	URL          string            `yaml:"url"`
+	Source       string            `yaml:"source"`
 	LocalReplace map[string]string `yaml:"variables"`
 }
 

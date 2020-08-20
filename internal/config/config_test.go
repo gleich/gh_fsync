@@ -10,7 +10,7 @@ import (
 func TestRawRead(t *testing.T) {
 	utils.ProjectRoot(t, 2)
 	var instance Outline
-	expected := Outline{GlobalReplace: map[string]string{"docker_username": "mattgleich", "github_username": "${{ file.USERNAME }}"}, Files: []FileOutline{{Name: "CONTRIBUTING.md", URL: "https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md", LocalReplace: map[string]string{"docker_username": "USERNAME"}}, {Name: "LICENSE.md", URL: "https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md", LocalReplace: map[string]string{"docker_username": "USERNAME"}}}}
+	expected := Outline{GlobalReplace: map[string]string{"docker_username": "mattgleich", "github_username": "${{ file.USERNAME }}"}, Files: []FileOutline{{Name: "CONTRIBUTING.md", Source: "https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md", LocalReplace: map[string]string{"docker_username": "USERNAME"}}, {Name: "LICENSE.md", Source: "https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md", LocalReplace: map[string]string{"docker_username": "USERNAME"}}}}
 
 	rawRead(&instance, "examples/config.yml")
 	assert.Equal(t, expected, instance)
