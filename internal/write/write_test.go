@@ -40,10 +40,7 @@ func TestGetChangedFiles(t *testing.T) {
 			Updated: "xerox",
 		},
 	})
-	assert.Equal(t, map[string]string{
-		"file1.txt": "same",
-		"file2.txt": "xerox",
-	}, instance1)
+	assert.Equal(t, map[string]string{}, instance1)
 
 	instance2 := getChangedFiles(map[string]source.File{
 		"file1.txt": {
@@ -56,7 +53,7 @@ func TestGetChangedFiles(t *testing.T) {
 		},
 	})
 	assert.Equal(t, map[string]string{
-		"file1.txt": "same",
+		"file2.txt": "xerox",
 	}, instance2)
 
 	instance3 := getChangedFiles(map[string]source.File{
@@ -65,5 +62,7 @@ func TestGetChangedFiles(t *testing.T) {
 			Updated: "different",
 		},
 	})
-	assert.Equal(t, map[string]string{}, instance3)
+	assert.Equal(t, map[string]string{
+		"file1.txt": "different",
+	}, instance3)
 }
