@@ -3,23 +3,18 @@ package changes
 import (
 	"fmt"
 	"os"
-	"os/exec"
 
+	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
 )
 
 func Commit() {
 	logoru.Info("Commiting changes")
-	err := exec.Command("git", "add", ".").Run()
-	if err != nil {
-		logoru.Error("Failed to stage changes", err)
-		os.Exit(1)
-	}
 	commitMsg := os.Getenv("COMMIT_MESSAGE")
-	err = exec.Command("git", "commit", "-m", fmt.Sprintf(`"%v"`, commitMsg)).Run()
-	if err != nil {
-		logoru.Error("Failed to commit changes", err)
-		os.Exit(1)
-	}
+	utils.RunCommand("git config --global user.email \"action@github.com\"", "Failed to config user email")
+	utils.RunCommand("git config --global user.name \"Publishing Bot\"", "Failed to config user name")
+	utils.RunCommand("git add .", "Failed to stage changes")
+	utils.RunCommand(fmt.Sprintf("git commit -m %v", commitMsg), "Failed to commit changes")
+	utils.RunCommand("git push", "Failed to push changes")
 	logoru.Success("Committed changes!")
 }
