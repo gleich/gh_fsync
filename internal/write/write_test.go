@@ -3,7 +3,6 @@ package write
 import (
 	"testing"
 
-	"github.com/Matt-Gleich/gh_fsync/internal/source"
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/stretchr/testify/assert"
 )
@@ -27,42 +26,4 @@ func TestRawWrite(t *testing.T) {
 	})
 	assert.Equal(t, test1Contents, utils.SafeFileRead(fName1))
 	assert.Equal(t, test2Contents, utils.SafeFileRead(fName2))
-}
-
-func TestGetChangedFiles(t *testing.T) {
-	instance1 := getChangedFiles(map[string]source.File{
-		"file1.txt": {
-			Current: "same",
-			Updated: "same",
-		},
-		"file2.txt": {
-			Current: "xerox",
-			Updated: "xerox",
-		},
-	})
-	assert.Equal(t, map[string]string{}, instance1)
-
-	instance2 := getChangedFiles(map[string]source.File{
-		"file1.txt": {
-			Current: "same",
-			Updated: "same",
-		},
-		"file2.txt": {
-			Current: "different",
-			Updated: "xerox",
-		},
-	})
-	assert.Equal(t, map[string]string{
-		"file2.txt": "xerox",
-	}, instance2)
-
-	instance3 := getChangedFiles(map[string]source.File{
-		"file1.txt": {
-			Current: "same",
-			Updated: "different",
-		},
-	})
-	assert.Equal(t, map[string]string{
-		"file1.txt": "different",
-	}, instance3)
 }
