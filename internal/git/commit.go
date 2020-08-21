@@ -18,6 +18,5 @@ func Commit(config config.Outline) {
 	utils.RunCommand("git", []string{"add", "."}, "Failed to stage changes")
 	utils.RunCommand("git", []string{"status"}, "Failed to get git status")
 	utils.RunCommand("git", []string{"commit", "-m", commitMsg}, "Failed to commit changes")
-	utils.RunCommand("git", []string{"push"}, "Failed to push changes")
 	logoru.Success("✅ Committed changes")
 }
