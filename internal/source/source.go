@@ -19,7 +19,7 @@ type File struct {
 
 // Get the content for all the files
 func GetFromSource(configuration config.Outline) map[string]File {
-	logoru.Info("Getting files from source")
+	logoru.Info("📡 Getting files from source")
 	files := map[string]File{}
 	for _, file := range configuration.Files {
 		currentFile := utils.SafeFileRead(file.Path)
@@ -30,7 +30,7 @@ func GetFromSource(configuration config.Outline) map[string]File {
 			Updated: updateFile,
 		}
 	}
-	logoru.Success("Got files from source")
+	logoru.Success("✅ Got files from source")
 	return files
 }
 

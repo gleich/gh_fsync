@@ -9,9 +9,9 @@ import (
 
 // Prod version for rawWrite
 func WriteChanges(changes map[string]string) {
-	logoru.Info("Writing changes files")
+	logoru.Info("✍️ Writing changes to files")
 	rawWrite(changes)
-	logoru.Success("Wrote changes to files!")
+	logoru.Success("✅ Wrote changes to files")
 }
 
 // Write to all the files

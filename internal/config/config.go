@@ -35,11 +35,11 @@ var validLocations = []string{
 
 // Check existence and read the configuration fiAle
 func Read() Outline {
-	logoru.Info("Reading from configuration file")
+	logoru.Info("⚙️ Reading from configuration file")
 	path := checkExistence()
 	var configuration Outline
 	rawRead(&configuration, path)
-	logoru.Success("Read from configuration file")
+	logoru.Success("✅ Read from configuration file")
 	return configuration
 }
 

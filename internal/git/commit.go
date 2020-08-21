@@ -8,7 +8,7 @@ import (
 
 // Commit the changes
 func Commit(config config.Outline) {
-	logoru.Info("Commiting changes")
+	logoru.Info("🤝 Commiting changes")
 	commitMsg := config.CommitMessage
 	if commitMsg == "" {
 		commitMsg = "Update via sync"
@@ -19,5 +19,5 @@ func Commit(config config.Outline) {
 	utils.RunCommand("git", []string{"status"}, "Failed to get git status")
 	utils.RunCommand("git", []string{"commit", "-m", commitMsg}, "Failed to commit changes")
 	utils.RunCommand("git", []string{"push"}, "Failed to push changes")
-	logoru.Success("Committed changes!")
+	logoru.Success("✅ Committed changes")
 }

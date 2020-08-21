@@ -8,13 +8,13 @@ import (
 
 // Prod version of rawGetChanges
 func GetChanges(files map[string]File) map[string]string {
-	logoru.Info("Get changed files")
+	logoru.Info("👀 Checking for changed files")
 	changes := rawGetChanges(files)
 	if len(changes) == 0 {
 		logoru.Info("No changes detected! Have a good day 👋")
 		os.Exit(0)
 	}
-	logoru.Success("Got changed files")
+	logoru.Success("✅ Got changed files")
 	return changes
 }
 
