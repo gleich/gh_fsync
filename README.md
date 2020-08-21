@@ -101,7 +101,7 @@ files:
 
 ### 🤖 GitHub action
 
-Use the following for the GitHub action:
+Use the following for the GitHub action. ⚠️ Warning! GitHub doesn't allow GitHub actions to edit anything in the `.github` folder. So any thing in there you can't sync!
 
 ```yaml
 name: gh_fsync
