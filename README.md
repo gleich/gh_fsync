@@ -104,7 +104,7 @@ files:
 Use the following for the GitHub action:
 
 ```yaml
-path: gh_fsync
+name: gh_fsync
 
 on:
   push:
@@ -115,9 +115,9 @@ jobs:
   file_sync:
     runs-on: ubuntu-latest
     steps:
-      - path: Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-      - path: gh_fsync
+      - name: gh_fsync
         uses: Matt-Gleich/gh_fsync@master
 ```
 
