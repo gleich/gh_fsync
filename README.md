@@ -38,7 +38,7 @@ replace:
 
 ### 📁 Files
 
-List all of the files you want to sync. `path:` is the file name in your repo and `source` is the URL on GitHub for the file. Below is an example:
+List all of the files you want to sync. `path:` is the file path in your repo and `source:` is the URL on GitHub for the file. Below is an example:
 
 ```yaml
 files:
@@ -57,7 +57,7 @@ files:
         after: gh_fsync2
 ```
 
-A file specific replace will override any global replace with the name `before`. So in the case shown below the replace of `project_name` for the `CONTRIBUTING.md` file will overrule the global replace defined above:
+A file specific replace will override any global replace with the same `before`. So in the case shown below the replace of `project_name` for the `CONTRIBUTING.md` file will override the global replace defined before:
 
 ```yaml
 replace:
