@@ -11,6 +11,7 @@ import (
 
 // Outline for the configuration file
 type Outline struct {
+	CommitMessage string           `yaml:"commit_message"`
 	GlobalReplace []ReplaceOutline `yaml:"replace"`
 	Files         []FileOutline    `yaml:"files"`
 }

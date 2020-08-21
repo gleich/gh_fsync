@@ -1,3 +1,4 @@
+commit_message: 🔄 Update via sync
 replace:
   - before: project_name
     after: gh_fsync
@@ -6,9 +7,9 @@ files:
     source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
-        after: testing
+        after: gh_fsync2
   - name: LICENSE.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
     replace:
-      - before: docker_username
-        after: TESTING TESTING
+      - before: author_name
+        after: Matthew Gleich

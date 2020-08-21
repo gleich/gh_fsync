@@ -6,8 +6,3 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-inputs:
-  commit_message:
-    required: false
-    default: 'Update content via sync'
-    description: 'Commit message made when there are changes'

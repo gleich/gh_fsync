@@ -7,7 +7,7 @@ import (
 )
 
 func TestGetChangedFiles(t *testing.T) {
-	instance1 := GetChanges(map[string]File{
+	instance1 := rawGetChanges(map[string]File{
 		"file1.txt": {
 			Current: "same",
 			Updated: "same",
@@ -19,7 +19,7 @@ func TestGetChangedFiles(t *testing.T) {
 	})
 	assert.Equal(t, map[string]string{}, instance1)
 
-	instance2 := GetChanges(map[string]File{
+	instance2 := rawGetChanges(map[string]File{
 		"file1.txt": {
 			Current: "same",
 			Updated: "same",
@@ -33,7 +33,7 @@ func TestGetChangedFiles(t *testing.T) {
 		"file2.txt": "xerox",
 	}, instance2)
 
-	instance3 := GetChanges(map[string]File{
+	instance3 := rawGetChanges(map[string]File{
 		"file1.txt": {
 			Current: "same",
 			Updated: "different",
