@@ -23,7 +23,12 @@ func GetFromSource(configuration config.Outline) map[string]File {
 	files := map[string]File{}
 	for _, file := range configuration.Files {
 		currentFile := utils.SafeFileRead(file.Path)
-		sourceFile := getSourceContent(rawURL(file.Source))
+		sourceURL := file.Source
+		if sourceURL == "" {
+			logoru.Error("Source URL not defined for " + file.Path)
+			os.Exit(1)
+		}
+		sourceFile := getSourceContent(rawURL(sourceURL))
 		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace)
 		files[file.Path] = File{
 			Current: currentFile,
