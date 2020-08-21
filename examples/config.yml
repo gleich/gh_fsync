@@ -3,12 +3,12 @@ replace:
   - before: project_name
     after: gh_fsync
 files:
-  - name: CONTRIBUTING.md
+  - path: CONTRIBUTING.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
         after: gh_fsync2
-  - name: LICENSE.md
+  - path: LICENSE.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
     replace:
       - before: author_name

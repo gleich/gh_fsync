@@ -22,10 +22,10 @@ func GetFromSource(configuration config.Outline) map[string]File {
 	logoru.Info("Getting files from source")
 	files := map[string]File{}
 	for _, file := range configuration.Files {
-		currentFile := utils.SafeFileRead(file.Name)
+		currentFile := utils.SafeFileRead(file.Path)
 		sourceFile := getSourceContent(rawURL(file.Source))
 		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace)
-		files[file.Name] = File{
+		files[file.Path] = File{
 			Current: currentFile,
 			Updated: updateFile,
 		}
