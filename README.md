@@ -1,6 +1,6 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich"]:end -->
 
-# gh_fsync
+# gh_fsync ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/gh_fsync)
 
 🔄 GitHub action to sync files across repos in GitHub
 
