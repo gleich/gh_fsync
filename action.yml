@@ -6,3 +6,7 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+inputs:
+  PERSONAL_ACCESS_TOKEN:
+    description: 'Custom PAT token'
+    required: false
