@@ -101,13 +101,15 @@ files:
 
 ### 🤖 GitHub action
 
-Use the following for the GitHub action. ⚠️ Warning! GitHub doesn't allow GitHub actions to edit anything in the `.github` folder. So any thing in there you can't sync!
+Use the following for the GitHub action.
 
 ```yaml
 name: gh_fsync
 
 on:
   push:
+    branches:
+      - master
   schedule:
     - cron: '*/10 * * * *' # Runs every 10 minutes
 
@@ -119,6 +121,30 @@ jobs:
         uses: actions/checkout@v2
       - name: gh_fsync
         uses: Matt-Gleich/gh_fsync@master
+```
+
+If you want to sync files from the `.github` folder you need to to create a personal access token with the `read` and `workflows` permissions. Then set a secret for the repo with the value being the personal access token and the name being `PERSONAL_ACCESS_TOKEN`. Finally change your action file to the following:
+
+```yaml
+name: fsync
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  file_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: gh_fsync
+        uses: Matt-Gleich/gh_fsync@master
+        with:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
 
 ## 🙌 Contributing
