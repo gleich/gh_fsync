@@ -12,8 +12,7 @@ func SafeFileRead(fileName string) string {
 	// Checking to see if the file exists
 	info, err := os.Stat(fileName)
 	if os.IsNotExist(err) {
-		logoru.Error("File", fileName, "doesn't exist")
-		os.Exit(1)
+		return ""
 	}
 	if info.IsDir() {
 		logoru.Error("File", fileName, "is a directory")
