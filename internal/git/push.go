@@ -37,5 +37,8 @@ func getOriginURL() string {
 			url[8:],
 		)
 	}
+	if url[len(url)-4:] != ".git" {
+		url = url + ".git"
+	}
 	return url
 }
