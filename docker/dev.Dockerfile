@@ -1,10 +1,10 @@
 FROM golang:1.15
 
-# Meta data:
+# Meta data
 LABEL maintainer="matthewgleich@gmail.com"
 LABEL description="🔄 GitHub action to sync files across repos in GitHub"
 
-# Copying over all the files:
+# Copying over all the files
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 

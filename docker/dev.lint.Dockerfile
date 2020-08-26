@@ -8,7 +8,7 @@ LABEL description="🔄 GitHub action to sync files across repos in GitHub"
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-# Installing hadolint:
+# Installing hadolint
 WORKDIR /usr/bin
 RUN curl -sL -o hadolint "https://github.com/hadolint/hadolint/releases/download/v1.17.6/hadolint-$(uname -s)-$(uname -m)"
 RUN chmod 700 hadolint
