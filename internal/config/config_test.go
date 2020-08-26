@@ -16,9 +16,9 @@ func TestRawRead(t *testing.T) {
 
 func TestCheckExistence(t *testing.T) {
 	for i := range validLocations {
-		utils.CreateTempEnv(t, validLocations[i])
+		utils.CreateTempFile(t, validLocations[i])
 		instance := checkExistence()
 		assert.Equal(t, validLocations[i], instance)
-		utils.RemoveTempEnv(t, validLocations[i])
+		utils.RemoveTempFile(t, validLocations[i])
 	}
 }

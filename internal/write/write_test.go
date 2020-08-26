@@ -15,10 +15,10 @@ func TestRawWrite(t *testing.T) {
 		test1Contents = "HEEEEEELLLLLLOOOOO"
 		test2Contents = "WWWWOOOOORRRRLLLDD"
 	)
-	utils.CreateTempEnv(t, fName1)
-	utils.CreateTempEnv(t, fName2)
-	defer utils.RemoveTempEnv(t, fName1)
-	defer utils.RemoveTempEnv(t, fName2)
+	utils.CreateTempFile(t, fName1)
+	utils.CreateTempFile(t, fName2)
+	defer utils.RemoveTempFile(t, fName1)
+	defer utils.RemoveTempFile(t, fName2)
 
 	rawWrite(map[string]string{
 		"test1.txt": test1Contents,

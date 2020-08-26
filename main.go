@@ -12,7 +12,6 @@ func main() {
 	sourceFiles := source.GetFromSource(configuration)
 	changes := source.GetChanges(sourceFiles)
 	write.WriteChanges(changes)
-	git.Authenticate()
 	git.Commit(configuration)
 	git.Push()
 }

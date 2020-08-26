@@ -8,5 +8,8 @@ runs:
   image: 'Dockerfile'
 inputs:
   PERSONAL_ACCESS_TOKEN:
-    description: 'Custom PAT token'
+    description: Custom PAT token
+    required: false
+  GITHUB_USERNAME:
+    description: GitHub username for the owner of the PAT
     required: false

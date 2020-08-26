@@ -5,8 +5,20 @@ import (
 	"testing"
 )
 
+// Create a temporary environment variable
+func CreateTempEnv(t *testing.T, key string, value string) {
+	err := os.Setenv(key, value)
+	CheckTestingErr(t, err)
+}
+
+// Remove a temporary environment variable
+func RemoveTempEnv(t *testing.T, key string) {
+	err := os.Setenv(key, "")
+	CheckTestingErr(t, err)
+}
+
 // Create a temporary environment for testing
-func CreateTempEnv(t *testing.T, fName string) {
+func CreateTempFile(t *testing.T, fName string) {
 	f, err := os.Create(fName)
 	CheckTestingErr(t, err)
 	err = f.Close()
@@ -14,7 +26,7 @@ func CreateTempEnv(t *testing.T, fName string) {
 }
 
 // Remove the temporary environment for testing
-func RemoveTempEnv(t *testing.T, fName string) {
+func RemoveTempFile(t *testing.T, fName string) {
 	err := os.Remove(fName)
 	CheckTestingErr(t, err)
 }
