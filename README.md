@@ -111,7 +111,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '*/10 * * * *' # Runs every 10 minutes
+    - cron: '*/30 * * * *' # Runs every 30 minutes
 
 jobs:
   file_sync:
@@ -133,7 +133,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/30 * * * *' # Runs every 30 minutes
 
 jobs:
   file_sync:
