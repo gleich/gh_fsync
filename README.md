@@ -141,10 +141,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: gh_fsync
         uses: Matt-Gleich/gh_fsync@master
-        with:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
 
 ## 🙌 Contributing
