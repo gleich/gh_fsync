@@ -29,7 +29,7 @@ func GetFromSource(configuration config.Outline) map[string]File {
 			os.Exit(1)
 		}
 		sourceFile := getSourceContent(rawURL(sourceURL))
-		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace)
+		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace, file.IgnoreGlobalReplace)
 		files[file.Path] = File{
 			Current: currentFile,
 			Updated: updateFile,
@@ -40,22 +40,24 @@ func GetFromSource(configuration config.Outline) map[string]File {
 }
 
 // Replace everything defined for that specific file (localReplace) first and then any global replacements (globalReplace)
-func replace(raw string, globalReplace []config.ReplaceOutline, localReplace []config.ReplaceOutline) string {
+func replace(raw string, globalReplace []config.ReplaceOutline, localReplace []config.ReplaceOutline, ignoreGlobal bool) string {
 	// Local replace
 	for _, lReplace := range localReplace {
 		raw = strings.ReplaceAll(raw, lReplace.Before, lReplace.After)
 	}
-	// Global replace
-	for _, gReplace := range globalReplace {
-		var alreadyUsed bool
-		for _, lReplace := range localReplace {
-			if gReplace.Before == lReplace.Before {
-				alreadyUsed = true
-				break
+	if ignoreGlobal {
+		// Global replace
+		for _, gReplace := range globalReplace {
+			var alreadyUsed bool
+			for _, lReplace := range localReplace {
+				if gReplace.Before == lReplace.Before {
+					alreadyUsed = true
+					break
+				}
 			}
-		}
-		if !alreadyUsed {
-			raw = strings.ReplaceAll(raw, gReplace.Before, gReplace.After)
+			if !alreadyUsed {
+				raw = strings.ReplaceAll(raw, gReplace.Before, gReplace.After)
+			}
 		}
 	}
 	return raw

@@ -18,9 +18,10 @@ type Outline struct {
 
 // Outline for a file in the config
 type FileOutline struct {
-	Path         string           `yaml:"path"`
-	Source       string           `yaml:"source"`
-	LocalReplace []ReplaceOutline `yaml:"replace"`
+	Path                string           `yaml:"path"`
+	Source              string           `yaml:"source"`
+	LocalReplace        []ReplaceOutline `yaml:"replace"`
+	IgnoreGlobalReplace bool             `yaml:"ignore_global_replace"`
 }
 
 // Outline for a replacement
@@ -30,7 +31,9 @@ type ReplaceOutline struct {
 }
 
 var validLocations = []string{
-	".github/fsync.yml", ".github/fsync.yaml", ".fsync.yml", ".fsync.yaml", "fsync.yml", "fsync.yaml",
+	".github/fsync.yml", ".github/fsync.yaml",
+	".fsync.yml", ".fsync.yaml",
+	"fsync.yml", "fsync.yaml",
 }
 
 // Check existence and read the configuration fiAle
