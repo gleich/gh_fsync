@@ -30,6 +30,7 @@ type ReplaceOutline struct {
 	After  string `yaml:"after"`
 }
 
+// Valid locations for where the config file can live
 var validLocations = []string{
 	".github/fsync.yml", ".github/fsync.yaml",
 	".fsync.yml", ".fsync.yaml",

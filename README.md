@@ -57,7 +57,7 @@ files:
         after: gh_fsync2
 ```
 
-A file specific replace will override any global replace with the same `before`. So in the case shown below the replace of `project_name` for the `CONTRIBUTING.md` file will override the global replace defined before:
+A file specific replace will override any global replace with the same `before`. So in the case shown below the replace of `project_name` for the `CONTRIBUTING.md` file will override the global replace defined before. If you would like to completely ignore the global replace for that file add `ignore_global_replace: true` to the file. This is optional and an example is shown down in the examples section.
 
 ```yaml
 replace:
@@ -94,6 +94,7 @@ files:
         after: gh_fsync2
   - path: LICENSE.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
+    ignore_global_replace: true
     replace:
       - before: author_name
         after: Matthew Gleich

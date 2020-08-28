@@ -10,7 +10,7 @@ files:
         after: gh_fsync2
   - path: LICENSE.md
     source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
-    ignore_global_replace: false
+    ignore_global_replace: true
     replace:
       - before: author_name
         after: Matthew Gleich
