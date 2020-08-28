@@ -45,7 +45,7 @@ func replace(raw string, globalReplace []config.ReplaceOutline, localReplace []c
 	for _, lReplace := range localReplace {
 		raw = strings.ReplaceAll(raw, lReplace.Before, lReplace.After)
 	}
-	if ignoreGlobal {
+	if !ignoreGlobal {
 		// Global replace
 		for _, gReplace := range globalReplace {
 			var alreadyUsed bool
