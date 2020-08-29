@@ -25,7 +25,7 @@ func GetFromSource(configuration config.Outline) map[string]File {
 		currentFile := utils.SafeFileRead(file.Path)
 		sourceURL := file.Source
 		if sourceURL == "" {
-			logoru.Error("Source URL not defined for " + file.Path)
+			logoru.Error("Source URL not defined for", file.Path)
 			os.Exit(1)
 		}
 		sourceFile := getSourceContent(rawURL(sourceURL))
