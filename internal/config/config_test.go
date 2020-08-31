@@ -15,10 +15,5 @@ func TestRawRead(t *testing.T) {
 }
 
 func TestCheckExistence(t *testing.T) {
-	for i := range validLocations {
-		utils.CreateTempFile(t, validLocations[i])
-		instance := checkExistence()
-		assert.Equal(t, validLocations[i], instance)
-		utils.RemoveTempFile(t, validLocations[i])
-	}
+	assert.Equal(t, "fsync.yml", checkExistence())
 }
