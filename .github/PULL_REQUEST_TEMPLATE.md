@@ -1,3 +1,5 @@
+<!-- SOURCED FROM: https://github.com/Matt-Gleich/Matt-Gleich/blob/master/standard_documents/templates/pull_request.md -->
+
 ## Description
 
 <!--
@@ -21,5 +23,5 @@ This PR resolves #22
 -->
 
 <!--
-Thank you for your contribution to project_name!
+Thank you for your contribution to gh_fsync!
 -->
