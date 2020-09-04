@@ -1,6 +1,7 @@
 package write
 
 import (
+	"os"
 	"testing"
 
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
@@ -26,4 +27,27 @@ func TestRawWrite(t *testing.T) {
 	})
 	assert.Equal(t, test1Contents, utils.SafeFileRead(fName1))
 	assert.Equal(t, test2Contents, utils.SafeFileRead(fName2))
+}
+
+func TestCreateParentFolder(t *testing.T) {
+	const folderName = "test-folder"
+	completePath := "./" + folderName + "/text.txt"
+
+	// Folder doesn't exist
+	createParentFolder(completePath)
+	assert.True(t, fExists(folderName))
+
+	// Folder does exist
+	createParentFolder(completePath)
+	assert.True(t, fExists(folderName))
+	assert.False(t, fExists(completePath))
+
+	err := os.RemoveAll(folderName)
+	utils.CheckTestingErr(t, err)
+}
+
+// Check if a file or folder exists
+func fExists(folderName string) bool {
+	_, err := os.Stat(folderName)
+	return !os.IsNotExist(err)
 }
