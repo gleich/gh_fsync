@@ -20,7 +20,7 @@ func WriteChanges(changes map[string]string) {
 func rawWrite(files map[string]string) {
 	for fileName, fileContent := range files {
 		createParentFolder(fileName)
-		err := ioutil.WriteFile(fileName, []byte(fileContent), 0700)
+		err := ioutil.WriteFile(fileName, []byte(fileContent), 0655)
 		utils.CheckErr("Failed to write to "+fileName, err)
 	}
 }
