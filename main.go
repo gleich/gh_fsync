@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/Matt-Gleich/gh_fsync/internal/config"
-	"github.com/Matt-Gleich/gh_fsync/internal/git"
-	"github.com/Matt-Gleich/gh_fsync/internal/source"
-	"github.com/Matt-Gleich/gh_fsync/internal/write"
+	"github.com/Matt-Gleich/gh_fsync/pkg/config"
+	"github.com/Matt-Gleich/gh_fsync/pkg/git"
+	"github.com/Matt-Gleich/gh_fsync/pkg/source"
+	"github.com/Matt-Gleich/gh_fsync/pkg/write"
 )
 
 func main() {

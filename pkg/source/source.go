@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Matt-Gleich/gh_fsync/internal/config"
+	"github.com/Matt-Gleich/gh_fsync/pkg/config"
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
 )

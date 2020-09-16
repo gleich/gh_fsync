@@ -3,7 +3,7 @@ package source
 import (
 	"testing"
 
-	"github.com/Matt-Gleich/gh_fsync/internal/config"
+	"github.com/Matt-Gleich/gh_fsync/pkg/config"
 	"github.com/stretchr/testify/assert"
 )
 
