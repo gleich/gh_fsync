@@ -65,7 +65,7 @@ func checkExistence() string {
 		}
 	}
 	if foundPath == "" {
-		logoru.Error("Configuration file not found")
+		logoru.Critical("Configuration file not found")
 		os.Exit(1)
 	}
 	return foundPath

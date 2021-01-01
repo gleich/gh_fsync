@@ -3,7 +3,7 @@ package write
 import (
 	"io/ioutil"
 	"os"
-	"strings"
+	"path/filepath"
 
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
@@ -27,11 +27,7 @@ func rawWrite(files map[string]string) {
 
 // Create the parent folder for a file if it doesn't exist
 func createParentFolder(fName string) {
-	pathChunks := strings.Split(fName, "/")
-	if len(pathChunks) == 1 || (len(pathChunks) == 2 && pathChunks[0] == ".") {
-		return
-	}
-	parentFolder := strings.Join(pathChunks[:len(pathChunks)-1], "/")
+	parentFolder := filepath.Dir(fName)
 	err := os.MkdirAll(parentFolder, 0700)
 	utils.CheckErr("Failed to create parent folder for file", err)
 }

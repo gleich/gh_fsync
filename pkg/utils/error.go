@@ -10,7 +10,7 @@ import (
 // Check an error in one line
 func CheckErr(msg string, err error) {
 	if err != nil {
-		logoru.Error(msg, ";", err)
+		logoru.Critical(msg, ";", err)
 		os.Exit(1)
 	}
 }
