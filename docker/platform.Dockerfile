@@ -16,5 +16,6 @@ RUN go build -o app .
 
 # hadolint ignore=DL3006,DL3007
 FROM alpine:latest
-RUN apk add git==2.26.2-r0 --no-cache
+RUN apk update
+RUN apk add git==2.30.0-r0 --no-cache
 COPY --from=builder /usr/src/app/app .
