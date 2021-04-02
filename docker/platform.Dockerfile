@@ -21,4 +21,5 @@ RUN apk update
 # hadolint ignore=DL3018
 RUN apk add git --no-cache
 
+WORKDIR /
 COPY --from=builder /usr/src/app/app .
