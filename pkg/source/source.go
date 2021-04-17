@@ -29,7 +29,12 @@ func GetFromSource(configuration config.Outline) map[string]File {
 			os.Exit(1)
 		}
 		sourceFile := getSourceContent(rawURL(sourceURL))
-		updateFile := replace(sourceFile, configuration.GlobalReplace, file.LocalReplace, file.IgnoreGlobalReplace)
+		updateFile := replace(
+			sourceFile,
+			configuration.GlobalReplace,
+			file.LocalReplace,
+			file.IgnoreGlobalReplace,
+		)
 		files[file.Path] = File{
 			Current: currentFile,
 			Updated: updateFile,
@@ -40,7 +45,12 @@ func GetFromSource(configuration config.Outline) map[string]File {
 }
 
 // Replace everything defined for that specific file (localReplace) first and then any global replacements (globalReplace)
-func replace(raw string, globalReplace []config.ReplaceOutline, localReplace []config.ReplaceOutline, ignoreGlobal bool) string {
+func replace(
+	raw string,
+	globalReplace []config.ReplaceOutline,
+	localReplace []config.ReplaceOutline,
+	ignoreGlobal bool,
+) string {
 	// Local replace
 	for _, lReplace := range localReplace {
 		raw = strings.ReplaceAll(raw, lReplace.Before, lReplace.After)
@@ -85,5 +95,10 @@ func getSourceContent(url string) string {
 func rawURL(url string) string {
 	chunks := strings.Split(url, "/")
 	blobRemoved := strings.Join(append(chunks[:5], chunks[6:]...), "/")
-	return strings.Replace(blobRemoved, "https://github.com", "https://raw.githubusercontent.com", 1)
+	return strings.Replace(
+		blobRemoved,
+		"https://github.com",
+		"https://raw.githubusercontent.com",
+		1,
+	)
 }
