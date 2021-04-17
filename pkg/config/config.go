@@ -3,6 +3,7 @@ package config
 import (
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
 	"github.com/Matt-Gleich/logoru"
@@ -41,18 +42,37 @@ var validLocations = []string{
 func Read() Outline {
 	logoru.Info("⚙️ Reading from configuration file")
 	path := checkExistence()
-	var configuration Outline
-	rawRead(&configuration, path)
+	configuration := rawRead(path)
 	logoru.Success("✅ Read from configuration file")
 	return configuration
 }
 
 // Read from the config file
-func rawRead(c *Outline, path string) {
+func rawRead(path string) Outline {
 	content, err := ioutil.ReadFile(path)
 	utils.CheckErr("Failed to read config file", err)
-	err = yaml.Unmarshal(content, c)
+	var configuration Outline
+	err = yaml.Unmarshal(content, &configuration)
 	utils.CheckErr("Failed to unmarshal yaml config", err)
+
+	// Removing files that come from the current repo
+	url := strings.TrimSuffix(
+		utils.RunCommand(
+			"git",
+			[]string{"config", "--get", "remote.origin.url"},
+			"Failed to get remote URL",
+		),
+		".git",
+	)
+	cleaned_files := []FileOutline{}
+	for _, file := range configuration.Files {
+		if !strings.HasPrefix(file.Source, url) {
+			cleaned_files = append(cleaned_files, file)
+		}
+	}
+	configuration.Files = cleaned_files
+
+	return configuration
 }
 
 // Check to make sure the config file exists. Returns the path

@@ -9,8 +9,7 @@ import (
 
 func TestRawRead(t *testing.T) {
 	utils.ProjectRoot(t, 2)
-	var instance Outline
-	rawRead(&instance, "examples/config.yml")
+	instance := rawRead("examples/config.yml")
 	assert.Equal(
 		t,
 		Outline{
