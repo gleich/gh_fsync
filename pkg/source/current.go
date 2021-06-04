@@ -3,7 +3,7 @@ package source
 import (
 	"os"
 
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/logoru"
 )
 
 // Prod version of rawGetChanges

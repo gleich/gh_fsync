@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/logoru"
 )
 
 // Prod version for rawWrite

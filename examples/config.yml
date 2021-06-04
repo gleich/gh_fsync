@@ -4,12 +4,12 @@ replace:
     after: gh_fsync
 files:
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
+    source: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
         after: gh_fsync2
   - path: LICENSE.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
+    source: https://github.com/gleich/go_template/blob/master/LICENSE.md
     ignore_global_replace: true
     replace:
       - before: author_name

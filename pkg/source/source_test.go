@@ -3,7 +3,7 @@ package source
 import (
 	"testing"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/config"
+	"github.com/gleich/gh_fsync/pkg/config"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -34,7 +34,7 @@ func TestReplace(t *testing.T) {
 
 func TestGetContent(t *testing.T) {
 	instance1 := getSourceContent(
-		"https://raw.githubusercontent.com/Matt-Gleich/jsx/master/public/robots.txt",
+		"https://raw.githubusercontent.com/gleich/jsx/master/public/robots.txt",
 	)
 	assert.Equal(
 		t,
@@ -42,7 +42,7 @@ func TestGetContent(t *testing.T) {
 		instance1,
 	)
 	instance2 := getSourceContent(
-		"https://raw.githubusercontent.com/Matt-Gleich/CongressPresenation/master/.metadata",
+		"https://raw.githubusercontent.com/gleich/CongressPresenation/master/.metadata",
 	)
 	assert.Equal(
 		t,
@@ -52,16 +52,16 @@ func TestGetContent(t *testing.T) {
 }
 
 func TestRawURL(t *testing.T) {
-	instance1 := rawURL("https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md")
+	instance1 := rawURL("https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md")
 	assert.Equal(
 		t,
-		"https://raw.githubusercontent.com/Matt-Gleich/go_template/master/CONTRIBUTING.md",
+		"https://raw.githubusercontent.com/gleich/go_template/master/CONTRIBUTING.md",
 		instance1,
 	)
-	instance2 := rawURL("https://github.com/Matt-Gleich/Dot-Files/blob/master/LICENSE.md")
+	instance2 := rawURL("https://github.com/gleich/Dot-Files/blob/master/LICENSE.md")
 	assert.Equal(
 		t,
-		"https://raw.githubusercontent.com/Matt-Gleich/Dot-Files/master/LICENSE.md",
+		"https://raw.githubusercontent.com/gleich/Dot-Files/master/LICENSE.md",
 		instance2,
 	)
 }

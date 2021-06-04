@@ -1,9 +1,9 @@
 package git
 
 import (
-	"github.com/Matt-Gleich/gh_fsync/pkg/config"
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/gh_fsync/pkg/config"
+	"github.com/gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/logoru"
 )
 
 // Commit the changes

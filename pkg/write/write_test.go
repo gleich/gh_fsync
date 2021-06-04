@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/gh_fsync/pkg/utils"
 	"github.com/stretchr/testify/assert"
 )
 

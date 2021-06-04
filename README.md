@@ -1,13 +1,13 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["gleich"]:end -->
 
 # gh_fsync ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/gh_fsync)
 
 🔄 GitHub action to sync files across repos in GitHub
 
-![build](https://github.com/Matt-Gleich/gh_fsync/workflows/build/badge.svg)
-![test](https://github.com/Matt-Gleich/gh_fsync/workflows/test/badge.svg)
-![lint](https://github.com/Matt-Gleich/gh_fsync/workflows/lint/badge.svg)
-![release](https://github.com/Matt-Gleich/gh_fsync/workflows/release/badge.svg)
+![build](https://github.com/gleich/gh_fsync/workflows/build/badge.svg)
+![test](https://github.com/gleich/gh_fsync/workflows/test/badge.svg)
+![lint](https://github.com/gleich/gh_fsync/workflows/lint/badge.svg)
+![release](https://github.com/gleich/gh_fsync/workflows/release/badge.svg)
 
 ## ❓ What is gh_fsync
 
@@ -43,7 +43,7 @@ List all of the files you want to sync. `path:` is the file path in your repo an
 ```yaml
 files:
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
+    source: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
 ```
 
 You can even replace values specific to a file. Below is an example:
@@ -51,7 +51,7 @@ You can even replace values specific to a file. Below is an example:
 ```yaml
 files:
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
+    source: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
         after: gh_fsync2
@@ -65,7 +65,7 @@ replace:
     after: gh_fsync
 files:
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
+    source: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
         after: gh_fsync2
@@ -88,12 +88,12 @@ replace:
     after: gh_fsync
 files:
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
+    source: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
     replace:
       - before: project_name
         after: gh_fsync2
   - path: LICENSE.md
-    source: https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md
+    source: https://github.com/gleich/go_template/blob/master/LICENSE.md
     ignore_global_replace: true
     replace:
       - before: author_name
@@ -121,7 +121,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: gh_fsync
-        uses: Matt-Gleich/gh_fsync@master
+        uses: gleich/gh_fsync@master
 ```
 
 If you want to sync files from the `.github` folder you need to to create a personal access token with the `read` and `workflows` permissions. Then set a secret for the repo with the value being the personal access token and the name being `PERSONAL_ACCESS_TOKEN`. Finally change your action file to the following:
@@ -145,17 +145,17 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: gh_fsync
-        uses: Matt-Gleich/gh_fsync@master
+        uses: gleich/gh_fsync@master
 ```
 
 ## 🙌 Contributing
 
-Before contributing please read the [CONTRIBUTING.md file](https://github.com/Matt-Gleich/gh_fsync/blob/master/CONTRIBUTING.md)
+Before contributing please read the [CONTRIBUTING.md file](https://github.com/gleich/gh_fsync/blob/master/CONTRIBUTING.md)
 
 <!-- DO NOT REMOVE - contributor_list:start -->
 
 ## 👥 Contributors
 
-- **[@Matt-Gleich](https://github.com/Matt-Gleich)**
+- **[@gleich](https://github.com/gleich)**
 
 <!-- DO NOT REMOVE - contributor_list:end -->

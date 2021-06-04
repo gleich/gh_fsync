@@ -3,7 +3,7 @@ package config
 import (
 	"testing"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/gh_fsync/pkg/utils"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -18,7 +18,7 @@ func TestRawRead(t *testing.T) {
 			Files: []FileOutline{
 				{
 					Path:   "CONTRIBUTING.md",
-					Source: "https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md",
+					Source: "https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md",
 					LocalReplace: []ReplaceOutline{
 						{Before: "project_name", After: "gh_fsync2"},
 					},
@@ -26,7 +26,7 @@ func TestRawRead(t *testing.T) {
 				},
 				{
 					Path:   "LICENSE.md",
-					Source: "https://github.com/Matt-Gleich/go_template/blob/master/LICENSE.md",
+					Source: "https://github.com/gleich/go_template/blob/master/LICENSE.md",
 					LocalReplace: []ReplaceOutline{
 						{Before: "author_name", After: "Matthew Gleich"},
 					},

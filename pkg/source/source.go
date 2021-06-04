@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/config"
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/gh_fsync/pkg/config"
+	"github.com/gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/logoru"
 )
 
 // A file entry
@@ -90,8 +90,8 @@ func getSourceContent(url string) string {
 }
 
 // Replace the github view of a url to a raw text view
-// From: https://github.com/Matt-Gleich/go_template/blob/master/CONTRIBUTING.md
-// To: https://raw.githubusercontent.com/Matt-Gleich/go_template/master/CONTRIBUTING.md
+// From: https://github.com/gleich/go_template/blob/master/CONTRIBUTING.md
+// To: https://raw.githubusercontent.com/gleich/go_template/master/CONTRIBUTING.md
 func rawURL(url string) string {
 	chunks := strings.Split(url, "/")
 	blobRemoved := strings.Join(append(chunks[:5], chunks[6:]...), "/")

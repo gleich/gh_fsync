@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Matt-Gleich/gh_fsync/pkg/utils"
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/gh_fsync/pkg/utils"
+	"github.com/gleich/logoru"
 	"gopkg.in/yaml.v3"
 )
 

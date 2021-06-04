@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/logoru"
 )
 
 // Read a file and check for an error beforehand

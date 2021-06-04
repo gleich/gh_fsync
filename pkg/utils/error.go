@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/Matt-Gleich/logoru"
+	"github.com/gleich/logoru"
 )
 
 // Check an error in one line
