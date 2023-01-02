@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -56,14 +57,12 @@ func rawRead(path string) Outline {
 	utils.CheckErr("Failed to unmarshal yaml config", err)
 
 	// Removing files that come from the current repo
-	url := strings.TrimSuffix(
-		utils.RunCommand(
-			"git",
-			[]string{"config", "--get", "remote.origin.url"},
-			"Failed to get remote URL",
-		),
-		".git",
-	)
+	repo := os.Getenv("GITHUB_REPOSITORY")
+	url := fmt.Sprintf("https://github.com/%s", repo)
+	// here so tests don't break
+	if repo == "" {
+		url = ")"
+	}
 	cleaned_files := []FileOutline{}
 	for _, file := range configuration.Files {
 		if !strings.HasPrefix(file.Source, url) {
